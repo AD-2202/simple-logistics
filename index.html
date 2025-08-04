@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Logistics</title>
+    <style>
+        body { font-family: Arial; padding: 40px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 8px 12px; border: 1px solid #ccc; text-align: left; }
+        th { background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <h1>Shipment Manager</h1>
+    <form method="post" action="/add">
+        <input type="text" name="description" placeholder="Description" required>
+        <input type="text" name="method" placeholder="Method (e.g. Air, Sea)" required>
+        <input type="text" name="status" placeholder="Status (Delivered, Pending)" required>
+        <input type="number" name="cost" placeholder="Cost" required>
+        <button type="submit">Add Shipment</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>ID</th><th>Description</th><th>Method</th><th>Status</th><th>Cost</th>
+        </tr>
+        {% for s in shipments %}
+        <tr>
+            <td>{{ s.id }}</td>
+            <td>{{ s.description }}</td>
+            <td>{{ s.method }}</td>
+            <td>{{ s.status }}</td>
+            <td>{{ s.cost }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
